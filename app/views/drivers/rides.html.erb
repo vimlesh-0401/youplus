@@ -1,0 +1,46 @@
+<section  ng-controller="DriversController" ng-init="refresh();">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-6">
+          <input type="button" class="btn btn-primary pull-right" name="refresh" value="Refresh" ng-click="refresh();">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4"><h3 class="text-center">Waiting</h3></div>
+        <div class="col-sm-4"><h3 class="text-center">Ongoing</h3></div>
+        <div class="col-sm-4"><h3 class="text-center">Complete</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 waiting">
+          <div class="row" ng-repeat="wt in requests.waiting">
+            <address>
+              <strong>Req ID: {{wt.request_id}}</strong><strong>Cust Id: {{wt.customer_id}}</strong><br>
+              {{timely(wt.request_at)}}<br>
+              <small><input type="button" name="accept" value="Select" ng-click="letsRide(wt);" class="btn btn-primary"></small>
+            </address>
+          </div>
+        </div>
+        <div class="col-sm-4 ongoing">
+          <div class="row" ng-repeat="wt in requests.ongoing">
+            <address>
+              <strong>Req ID: {{wt.request_id}}</strong><strong>Cust Id: {{wt.customer_id}}</strong><br>
+              Req At: {{timely(wt.request_at)}}<br>
+              <small>Picked At: {{timely(wt.pickedup_at)}}</small>
+            </address>
+          </div>
+        </div>
+        <div class="col-sm-4 complete">
+          <div class="row" ng-repeat="wt in requests.complete">
+            <address>
+              <strong>Req ID: {{wt.request_id}}</strong><strong>Cust Id: {{wt.customer_id}}</strong><br>
+              Req At: {{timely(wt.request_at)}}<br>
+              <samll>Picked At: {{timely(wt.pickedup_at)}}</samll><br/>
+              <small>Comp At: {{timely(wt.completed_at)}}</small>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

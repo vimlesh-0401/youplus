@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Youplus</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="container" ng-app="youplusOlaAuto">
+      <div class="row">
+        <div class="col-sm-8 col-sm-push-2">
+          <div class="jumbotron">
+            <h1>Youplus Ola Auto</h1>
+            <span class="author"><b>{{author.name}}</b>< {{author.email}}></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-push-2">
+          <%= yield %>
+        </div>
+      </div>
+  </body>
+</html>

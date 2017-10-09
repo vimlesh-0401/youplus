@@ -1,0 +1,29 @@
+<section  ng-controller="DriversController">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-11">
+              <input type="button" class="pull-right btn btn-primary" name="refresh" value="Refresh" ng-click="refresh()">
+            </div>
+          </div>
+          <table class="table table-stripped" ng-init="refresh()">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="dr in drivers">
+                <td ng-bind="dr.driver"></td>
+                <td ng-bind="dr.available"></td>
+                <td>
+                    <a href="/drivers/{{dr.id}}" >Rides</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</section>
