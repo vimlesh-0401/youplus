@@ -35,4 +35,5 @@ class Request < ApplicationRecord
         self.save
         self.driver.update(available: true)
     end
+
 end

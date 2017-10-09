@@ -1,9 +1,12 @@
 class RequestsController < ApplicationController
     
+    before_action :invalidate_session, only: [:create, :complete]
+    
     def index
-        requests = Request.order(created_at: :desc)
-       respond_to do |format|
-            format.json { render json: requests , status: :ok}
+        requests = Request.includes(:driver).order(created_at: :desc)
+        
+        respond_to do |format|
+            format.json { render json: requests.to_json(include: :driver)}
         end 
     end
     
@@ -44,5 +47,9 @@ class RequestsController < ApplicationController
         
         def find_request
             Request.find(params[:id])
+        end
+        
+        def invalidate_session
+            session['driver_id'] = nil
         end
 end

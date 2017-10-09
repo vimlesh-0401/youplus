@@ -8,5 +8,6 @@ Rails.application.routes.draw do
             post :complete
         end
     end
+    resources :dashboard, only: [:index]
     get 'drivers(/:id)', to: 'drivers#rides'
 end

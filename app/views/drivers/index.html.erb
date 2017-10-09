@@ -1,7 +1,12 @@
 <section  ng-controller="DriversController" ng-init="onlyDrivers();">
     <div class="row">
         <div class="col-sm-12">
-          <table class="table table-stripped" ng-init="refresh()">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-6">
+              <input type="button" class="btn btn-primary pull-right" name="refresh" value="Refresh" ng-click="refresh();">
+            </div>
+          </div>
+          <table class="table table-stripped">
             <thead>
               <tr>
                 <th>Driver</th>

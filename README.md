@@ -41,4 +41,6 @@
 
    6. Visit [http://localhost:3000](http://localhost:3000/)
 
-   7. 
+   7. In homepage there are three tab: Dasboard, Customerapp and Driverapp.
+      You can access respective functionality using those menues.
+   8. 

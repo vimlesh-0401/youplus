@@ -1,0 +1,26 @@
+<section  ng-controller="ReportsController" ng-init="refresh();">
+    <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+                <th>Request Id</th>
+                <th>Customer Id</th>
+                <th>Time Elapsed</th>
+                <th>Status</th>
+                <th>Driver</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="ride in requests">
+                <td ng-bind="ride.request_id"></td>
+                <td ng-bind="ride.customer_id"></td>
+                <td>{{timely(ride.request_at, false)}}</td>
+                <td>{{rStatus(ride.status)}}</td>
+                <td ng-bind="ride.driver.driver"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</section>
