@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:create, :index] do
         member do 
             post :rides
+            post :complete
         end
     end
     get 'drivers(/:id)', to: 'drivers#rides'

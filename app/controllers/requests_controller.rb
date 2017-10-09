@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
             if req.valid?
                 format.json { render json: req , status: :ok}
             else
-                format.json { render json: req.errors, status: :unprocessable_entity }
+                format.json { render json: req.errors, status: 200 }
             end
         end
     end
@@ -24,8 +24,16 @@ class RequestsController < ApplicationController
             if req.assign_driver(session[:driver_id])
                 format.json { render json: req , status: :ok}
             else
-                format.json { render json: req.errors, status: :unprocessable_entity }
+                format.json { render json: req.errors, status: 200 }
             end
+        end
+    end
+    
+    def complete
+        req = find_request
+        req.complete
+        respond_to do |format|
+            format.json { render json: req , status: :ok}
         end
     end
     

@@ -8,7 +8,7 @@
   		if( $scope.request.customer_id == undefined) return;
   		$http.post('/requests.json', {request: $scope.request})
           .then(function(response){
-            console.log(response)
+            
           })
   		$scope.request = {};
   	}
