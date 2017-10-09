@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
     
-    before_action :invalidate_session, only: [:create, :complete]
+    before_action :invalidate_session, only: [:create]
     
     def index
         requests = Request.includes(:driver).order(created_at: :desc)
@@ -29,14 +29,6 @@ class RequestsController < ApplicationController
             else
                 format.json { render json: req.errors, status: 200 }
             end
-        end
-    end
-    
-    def complete
-        req = find_request
-        req.complete
-        respond_to do |format|
-            format.json { render json: req , status: :ok}
         end
     end
     

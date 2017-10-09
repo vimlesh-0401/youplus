@@ -23,6 +23,7 @@ class Request < ApplicationRecord
             self.status = 2
             self.save
             dr.update(available: false)
+            self.send_after self.id
             return true
         else
             return false
@@ -30,10 +31,19 @@ class Request < ApplicationRecord
     end
     
     def complete
-        self.completed_at = Time.now
-        self.status = 3
-        self.save
-        self.driver.update(available: true)
+        Request.transaction do
+            self.completed_at = Time.now
+            self.status = 3
+            self.save
+            self.driver.update(available: true)
+        end
     end
-
+    
+    def send_after work_id
+        Thread.new(work_id) do
+            sleep(60*5)
+            req = Request.find_by(id: work_id)
+            req.complete if req.present?
+        end
+    end
 end

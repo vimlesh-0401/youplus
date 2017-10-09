@@ -42,26 +42,10 @@
   	$scope.letsRide = function(request){
   	  $http.post('/requests/'+request.id+'/rides.json',{})
   	    .then(function(response){
-  	      $scope.expireIt(response.data)
   	      $scope.refresh();
   	    }, function(response){
   	      alert("Driver is busy..")
   	    })
-  	}
-  	
-  	$scope.expireIt = function(request){
-  	  setTimeout(function(){
-        $scope.doneRide(request);
-      }, $scope.fiveMin)
-      
-  	}
-  	
-  	$scope.doneRide = function(request){
-  	  
-  	  $http.post('/requests/'+request.id+'/complete.json', {})
-        .then(function(response){
-          $scope.refresh();
-        })
   	}
   }]);
 })();

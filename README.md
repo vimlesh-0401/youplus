@@ -43,4 +43,3 @@
 
    7. In homepage there are three tab: Dasboard, Customerapp and Driverapp.
       You can access respective functionality using those menues.
-   8. 
