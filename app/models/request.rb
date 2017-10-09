@@ -1,4 +1,5 @@
 class Request < ApplicationRecord
+    
     belongs_to :location, optional: true
     belongs_to :driver, optional: true
     
@@ -17,9 +18,20 @@ class Request < ApplicationRecord
             self.driver = Driver.find(driver_id)
             self.pickedup_at = Time.now
             self.status = 2
-            return self.save
+            self.save
+            self.ride_now
+            return true
         else
             return false
+        end
+    end
+    
+    def ride_now
+        Thread.new do
+            sleep(5.min)
+            self.status = 3
+            self.complete_at = Time.now
+            self.save
         end
     end
 end
