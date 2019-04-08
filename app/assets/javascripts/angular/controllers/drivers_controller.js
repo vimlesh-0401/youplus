@@ -4,7 +4,6 @@
   app.controller('DriversController', ["$scope", "$http", function($scope, $http) {
   	$scope.drivers = [];
   	$scope.requests = {waiting: [], ongoing: [], complete: []};
-  	$scope.fiveMin = (1000*5*60);
   	
   	$scope.onlyDrivers = function(){
   	  $http.get('/drivers.json', {})
