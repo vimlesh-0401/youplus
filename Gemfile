@@ -29,8 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'angularjs-rails', '~> 1.5', '>= 1.5.6'
 gem 'angularjs-rails-resource', '~> 2.0'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'angular_rails_csrf'
 
 group :development, :test do
